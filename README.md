@@ -1,10 +1,12 @@
-# Sample AEM project template
+# OCM Assets
 
-This is a project template for AEM-based applications. It is intended as a best-practice set of examples as well as a potential starting point to develop your own functionality.
+OCM Assets is an integration between Oracle Content Management (OCM) and Adobe Experience Manager (AEM).
+
+OCM Assets Project provides the capability to view and download OCM assets in AEM DAM, from where they can be further utilised for authoring in AEM.
 
 ## Modules
 
-The main parts of the template are:
+The main parts of the project are:
 
 * core: Java bundle containing all core functionality like OSGi services, listeners or schedulers, as well as component-related Java code such as servlets or request filters.
 * it.tests: Java based integration tests
