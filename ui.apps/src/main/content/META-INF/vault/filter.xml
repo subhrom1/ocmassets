@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/apps/ocmassets/clientlibs"/>
+    <filter root="/apps/ocmassets/components"/>
+    <filter root="/apps/ocmassets/i18n"/>
+    <filter root="/apps/cq"/>
+</workspaceFilter>

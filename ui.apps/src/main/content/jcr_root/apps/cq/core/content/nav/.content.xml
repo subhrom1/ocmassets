@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured">
+    <tools jcr:primaryType="nt:unstructured">
+        <OCM
+            jcr:primaryType="nt:unstructured"
+            jcr:title="Oracle Content Management">
+            <download-assets
+                jcr:description="Download assets from oracle content management to AEM"
+                jcr:primaryType="nt:unstructured"
+                jcr:title="OCM Assets"
+                href="/content/ocmassets/us/en/asset-downloader.html"
+                icon="dataDownload"
+                id="cq-ocm-downloadassets"/>
+        </OCM>
+    </tools>
+</jcr:root>
