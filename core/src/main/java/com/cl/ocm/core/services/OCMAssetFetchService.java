@@ -1,8 +1,10 @@
 package com.cl.ocm.core.services;
 
+import com.cl.ocm.core.dto.OCMAsset;
+
 import java.util.List;
 
 public interface OCMAssetFetchService {
 
-    public List<String> fetchOCMAssetLinks();
+    public List<OCMAsset> fetchOCMAssetLinks();
 }
