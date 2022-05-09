@@ -65,7 +65,7 @@ module.exports = {
       ...libsBaseConfig,
       name: 'clientlib-site',
       categories: ['ocmassets.site'],
-      dependencies: ['ocmassets.dependencies'],
+      dependencies: ['ocmassets.dependencies','cq.authoring.editor'],
       assets: {
         // Copy entrypoint scripts and stylesheets into the respective ClientLib
         // directories

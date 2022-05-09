@@ -23,11 +23,12 @@ public class OCMAssetFetchServiceImpl implements OCMAssetFetchService {
 
         List<OCMAsset> ocmAssetsList = new ArrayList<>();
 
-        ocmAssetsList.add(new OCMAsset("Trees","https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",false));
-        ocmAssetsList.add(new OCMAsset("Sea","https://cdn.pixabay.com/photo/2013/07/18/20/26/sea-164989_1280.jpg",false));
-        ocmAssetsList.add(new OCMAsset("Mountain","https://cdn.pixabay.com/photo/2013/04/04/12/34/mountains-100367_1280.jpg",false));
-        ocmAssetsList.add(new OCMAsset("Birds","https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_1280.jpg",true));
-        ocmAssetsList.add(new OCMAsset("Berries","https://cdn.pixabay.com/photo/2010/12/13/10/05/berries-2277_1280.jpg",false));
+        for (int i=0; i< 10; i++) {
+            ocmAssetsList.add(new OCMAsset("Sea", "https://cdn.pixabay.com/photo/2013/07/18/20/26/sea-164989_1280.jpg", false));
+            ocmAssetsList.add(new OCMAsset("Mountain", "https://cdn.pixabay.com/photo/2013/04/04/12/34/mountains-100367_1280.jpg", false));
+            ocmAssetsList.add(new OCMAsset("Birds", "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_1280.jpg", false));
+            ocmAssetsList.add(new OCMAsset("Berries", "https://cdn.pixabay.com/photo/2010/12/13/10/05/berries-2277_1280.jpg", false));
+        }
 
         return ocmAssetsList;
     }

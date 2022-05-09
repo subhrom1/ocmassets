@@ -1,7 +1,43 @@
 <sly data-sly-use.model="com.cl.ocm.core.models.OCMAssetsModel">
   <coral-shell class="coral3-Shell">
+
+    <coral-shell-header class="coral--dark granite-shell-header coral3-Shell-header" data-granite-shell-header-mode-group="cq-damadmin-admin-childpages" role="region" aria-label="Header Bar">
+      <coral-shell-header-home class="globalnav-toggle" data-globalnav-toggle-href="/mnt/overlay/granite/ui/content/shell/globalnav.html?consoleId=cq-assets-files-files" role="heading" aria-level="2">
+        <a is="coral-shell-homeanchor" icon="adobeExperienceManagerColor" href="/aem/start.html" id="globalNavHeader" aria-expanded="false" class="coral3-Shell-homeAnchor">
+          <coral-icon class="coral3-Icon coral3-Shell-homeAnchor-icon coral3-Icon--sizeM coral3-Icon--adobeExperienceManagerColor" icon="adobeExperienceManagerColor" size="M" autoarialabel="on" role="img" aria-label="adobe experience manager color"></coral-icon>
+          <coral-shell-homeanchor-label>Adobe Experience Manager</coral-shell-homeanchor-label>
+        </a>
+      </coral-shell-header-home>
+      <coral-shell-header-actions>
+
+      </coral-shell-header-actions>
+      <coral-shell-header-content>
+      </coral-shell-header-content>
+    </coral-shell-header>
+
     <coral-shell-content role="main">
       <div id="granite-shell-content" class="foundation-layout-panel">
+
+        <coral-wait class="ocm-wait" size="L" centered style="position: absolute; top: 35%; right=50%;z-index: 1000;">
+        </coral-wait>
+
+        <coral-dialog id="ocm-dl-dialog" variant="info">
+          <coral-dialog-header>Asset Upload</coral-dialog-header>
+          <coral-dialog-content>Asset upload request sent..</coral-dialog-content>
+          <coral-dialog-footer><button is="coral-button" variant="primary" coral-close="" class="coral3-Button coral3-Button--primary" size="M"><coral-button-label>Ok</coral-button-label></button></coral-dialog-footer>
+        </coral-dialog>
+
+        <div class="foundation-layout-panel-header">
+          <betty-titlebar>
+            <betty-titlebar-title>
+              <span class="granite-title" role="heading" aria-level="1">Oracle Content Management </span>
+            </betty-titlebar-title>
+            <betty-titlebar-primary></betty-titlebar-primary>
+            <betty-titlebar-secondary>
+              <button class="foundation-collection-action upload-button"  data-foundation-collection-action='{"action": "cq.wcm.ocm.upload"}' type="button" autocomplete="off" is="coral-button" variant="primary" trackingfeature="" trackingelement="upload" tracking="ON" size="M"><coral-button-label>Upload to AEM</coral-button-label></button>
+            </betty-titlebar-secondary>
+          </betty-titlebar>
+        </div>
 
         <div class="foundation-layout-panel-bodywrapper">
           <div class="foundation-layout-panel-body">
@@ -9,7 +45,7 @@
             <div class="foundation-layout-panel-content foundation-collection-content" data-granite-layout-content-min-width="100">
               <coral-masonry class="cq-damadmin-admin-childpages foundation-collection foundation-layout-masonry coral3-Masonry is-loaded" data-foundation-collection-sortorder="asc" layout="fixed-spread" ariagrid="off" columnwidth="242" spacing="15" style="height: 1727px;">
                 <sly data-sly-list="${model.ocmAssets}">
-                  <coral-masonry-item class="foundation-collection-item coral3-Masonry-item is-managed" data-foundation-collection-item-id="${item.assetTitle}" data-granite-collection-item-id="${item.assetId}" data-datasource-index="${index}" tabindex="${index}" aria-selected="false" style="width: 242px; transform: translate(119px, 15px);">
+                  <coral-masonry-item class="foundation-collection-item coral3-Masonry-item is-managed" data-foundation-collection-item-id="${item.assetTitle}" data-href="${item.assetLink}" tabindex="${index}" aria-selected="false" style="width: 242px; transform: translate(119px, 15px);">
                     <div hidden="" data-timeline="true" class="foundation-collection-assets-meta" data-foundation-collection-meta-title="${item.assetTitle}" data-foundation-collection-meta-folder="false" data-foundation-collection-meta-type="asset" data-foundation-collection-meta-path="${item.assetLink}" data-asset-mimetype="image/png" data-can-compare="true" ></div>
                     <a class="foundation-layout-masonry-cardwrapper" tabindex="-1" target="undefined" href="${item.assetLink}" aria-haspopup="true" aria-owns="coral-id-55">
                       <coral-card data-timeline="true" data-can-compare="true" data-can-findsimilar="true" data-has-features="false" data-editorkey="" class="foundation-collection-navigator coral3-Card" data-foundation-collection-navigator-href="${item.assetLink}" data-item-type="asset" aria-haspopup="true" aria-owns="coral-id-55">
@@ -32,7 +68,7 @@
                       </coral-card>
                     </a>
                     <coral-quickactions target="_prev" alignmy="left top" alignat="left top">
-                      <coral-quickactions-item icon="check" class="foundation-collection-item-activator">${'Select' @ i18n, locale=request.locale}</coral-quickactions-item>
+                      <coral-quickactions-item icon="check" class="foundation-collection-action" data-foundation-collection-action='{"action": "cq.wcm.ocm.select"}'>Select</coral-quickactions-item>
                     </coral-quickactions>
 
                   </coral-masonry-item>
