@@ -29,10 +29,25 @@
             name: "cq.wcm.ocm.upload",
             handler: function(name, el, config, collection, selections) {
                 console.log('Upload Button Clicked');
-                $(".ocm-wait").show();
+                //$(".ocm-wait").show();
                 let selectedItems = $(".coral3-Masonry-item.is-selected");
                 console.log(selectedItems.length);
                 $(".ocm-dl-dialog").show();
+                let ocmAssetUploadDlg = new Coral.Dialog().set({
+                    id: "ocm-dl-success",
+                    header: {
+                      innerHTML: "AEM Asset Upload"
+                    },
+                    content: {
+                      innerHTML: "Asset upload request sent.."
+                    },
+                    footer: {
+                      innerHTML: "<button is=\"coral-button\" variant=\"primary\" coral-close=\"\" class=\"coral3-Button coral3-Button--primary\" size=\"M\"><coral-button-label>Ok</coral-button-label></button>"
+                    },
+                    variant: "info"
+                  });
+                  document.body.appendChild(ocmAssetUploadDlg);
+                  ocmAssetUploadDlg.show();
             }
         });
 })(window, document, Granite, Granite.$);
