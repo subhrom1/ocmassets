@@ -29,7 +29,7 @@
             name: "cq.wcm.ocm.upload",
             handler: function(name, el, config, collection, selections) {
                 console.log('Upload Button Clicked');
-                //$(".ocm-wait").show();
+                $(".ocm-wait").show();
                 let selectedItems = $(".coral3-Masonry-item.is-selected");
                 console.log(selectedItems.length);
                 $(".ocm-dl-dialog").show();
@@ -46,8 +46,16 @@
                     },
                     variant: "info"
                   });
-                  document.body.appendChild(ocmAssetUploadDlg);
-                  ocmAssetUploadDlg.show();
+
+                    let url = '/bin/uploadassets';
+                    fetch(url, { method: 'POST' })
+                        .then(Result => Result.json())
+                         .then(string => {
+                           document.body.appendChild(ocmAssetUploadDlg);
+                           ocmAssetUploadDlg.show();
+                           $(".ocm-wait").hide();
+                          })
+                     .catch(errorMsg => { console.log(errorMsg); });
             }
         });
 })(window, document, Granite, Granite.$);

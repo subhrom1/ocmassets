@@ -6,7 +6,7 @@
             jcr:primaryType="nt:unstructured"
             jcr:title="Oracle Content Management">
             <download-assets
-                jcr:description="Download assets from oracle content management to AEM"
+                jcr:description="Download assets from Oracle Content Management and simultaneously upload to Adobe Experience Manager"
                 jcr:primaryType="nt:unstructured"
                 jcr:title="OCM Assets"
                 href="/content/ocmassets/us/en/asset-downloader.html"
