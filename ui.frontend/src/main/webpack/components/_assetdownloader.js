@@ -58,4 +58,40 @@
                      .catch(errorMsg => { console.log(errorMsg); });
             }
         });
+
+          $(window).adaptTo("foundation-registry").register("foundation.collection.action.action", {
+                        name: "cq.wcm.ocm.link",
+                        handler: function(name, el, config, collection, selections) {
+                               if (selections.length != 1) {
+                                            return;
+                                        }
+
+                               selections.map((item) => {
+                                    let link = $(item).attr("data-href");
+                                    window.navigator.clipboard.writeText(link);
+                                    return true;
+                                });
+                        }
+                    });
+
+           $(window).adaptTo("foundation-registry").register("foundation.collection.action.action", {
+                name: "cq.wcm.ocm.embed",
+                handler: function(name, el, config, collection, selections) {
+                       if (selections.length != 1) {
+                                    return;
+                                }
+
+                       selections.map((item) => {
+                            let link = $(item).attr("data-href");
+                            let img = `<img src="${link}" alt="" />`;
+                            window.navigator.clipboard.writeText(img);
+                            return true;
+                        });
+                }
+            });
+
+            $(".ocm-popover").click((event) => {
+                 console.log("Clicked!!!");
+                })
+
 })(window, document, Granite, Granite.$);

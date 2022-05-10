@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured">
+    <items jcr:primaryType="nt:unstructured">
+        <headerbar jcr:primaryType="nt:unstructured">
+            <items jcr:primaryType="nt:unstructured">
+                <ocmassets
+                    granite:class="editor-GlobalBar-item ocm-popover"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/button"
+                    align="right"
+                    text="OCM Assets"
+                    variant="minimal"/>
+                <pageinfopopover jcr:primaryType="nt:unstructured">
+                    <items jcr:primaryType="nt:unstructured">
+                        <list jcr:primaryType="nt:unstructured">
+                            <items jcr:primaryType="nt:unstructured">
+                                <ocmassers jcr:primaryType="nt:unstructured"/>
+                            </items>
+                        </list>
+                    </items>
+                </pageinfopopover>
+            </items>
+        </headerbar>
+    </items>
+</jcr:root>
