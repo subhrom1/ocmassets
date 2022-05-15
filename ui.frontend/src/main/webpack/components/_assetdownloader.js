@@ -2,7 +2,20 @@
 
     $(".upload-button").hide();
     $(".ocm-wait").hide();
-    $(".ocm-dl-dialog").show();
+    $(".ocm-dl-dialog").hide();
+    $(".ocm-success-alert").hide();
+
+    successAlert = (msg) => {
+      $(".ocm-success-alert").find("coral-alert-content").html(msg);
+      $(".ocm-success-alert").fadeIn(1000);
+      $(".ocm-success-alert").fadeOut(1000)
+     };
+
+    errorAlert = (msg) => {
+      $(".ocm-error-alert").find("coral-alert-content").html(msg);
+      $(".ocm-error-alert").fadeIn(1000);
+      $(".ocm-error-alert").fadeOut(1000)
+     };
 
     $(window).adaptTo("foundation-registry").register("foundation.collection.action.action", {
         name: "cq.wcm.ocm.select",
@@ -28,7 +41,7 @@
         $(window).adaptTo("foundation-registry").register("foundation.collection.action.action", {
             name: "cq.wcm.ocm.upload",
             handler: function(name, el, config, collection, selections) {
-                console.log('Upload Button Clicked');
+                console.log('Upload Bu  tton Clicked');
                 $(".ocm-wait").show();
                 let selectedItems = $(".coral3-Masonry-item.is-selected");
                 console.log(selectedItems.length);
@@ -44,7 +57,7 @@
                     footer: {
                       innerHTML: "<button is=\"coral-button\" variant=\"primary\" coral-close=\"\" class=\"coral3-Button coral3-Button--primary\" size=\"M\"><coral-button-label>Ok</coral-button-label></button>"
                     },
-                    variant: "info"
+                    variant: "default"
                   });
 
                     let url = '/bin/uploadassets';
@@ -54,10 +67,19 @@
                            document.body.appendChild(ocmAssetUploadDlg);
                            ocmAssetUploadDlg.show();
                            $(".ocm-wait").hide();
+                           let selectedItems = $(".coral3-Masonry-item.is-selected");
+                           selectedItems.map(item => item.selected = false);
                           })
-                     .catch(errorMsg => { console.log(errorMsg); });
+                     .catch(errorMsg => { errorAlert(errorMsg); });
             }
         });
+
+         $(window).adaptTo("foundation-registry").register("foundation.collection.action.action", {
+                    name: "cq.wcm.ocm.back",
+                    handler: function(name, el, config, collection, selections) {
+                        window.history.go(-1);
+                    }
+                });
 
           $(window).adaptTo("foundation-registry").register("foundation.collection.action.action", {
                         name: "cq.wcm.ocm.link",
@@ -69,6 +91,7 @@
                                selections.map((item) => {
                                     let link = $(item).attr("data-href");
                                     window.navigator.clipboard.writeText(link);
+                                    successAlert("Asset link copied.")
                                     return true;
                                 });
                         }
@@ -85,13 +108,34 @@
                             let link = $(item).attr("data-href");
                             let img = `<img src="${link}" alt="" />`;
                             window.navigator.clipboard.writeText(img);
+                            successAlert("Asset embed copied.")
                             return true;
                         });
                 }
             });
 
-            $(".ocm-popover").click((event) => {
-                 console.log("Clicked!!!");
-                })
+
+            let container = $(".foundation-layout-panel-content");
+            let scrollToEndCount = 0;
+            container.scroll(() => {
+                if(container.scrollTop() + container.innerHeight() >= container[0].scrollHeight) {
+                       $(".ocm-wait").show();
+                       scrollToEndCount++;
+                       let url = `/content/ocmassets/us/en/asset-downloader-items.html?wcmmode=disabled&offset=${40*scrollToEndCount}`;
+                       fetch(url, { method: 'GET' })
+                        .then(Result => Result.text())
+                        .then(html => {
+                            let docx = $.parseHTML(html);
+                            let results = $(docx).find(".coral3-Masonry-item");
+                                if (results && results.length > 0) {
+                                    $(".coral3-Masonry").append(results);
+
+                                }
+                                $(".ocm-wait").hide();
+                            })
+                            .catch(errorMsg => { errorAlert(errorMsg);$(".ocm-results-wait").hide(); });
+
+                }
+            });
 
 })(window, document, Granite, Granite.$);

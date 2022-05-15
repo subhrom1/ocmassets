@@ -10,7 +10,7 @@
                 jcr:primaryType="nt:unstructured"
                 jcr:title="OCM Assets"
                 href="/content/ocmassets/us/en/asset-downloader.html"
-                icon="dataDownload"
+                icon="dataUpload"
                 id="cq-ocm-downloadassets"/>
         </OCM>
     </tools>

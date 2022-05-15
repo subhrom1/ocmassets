@@ -1,0 +1,32 @@
+<sly data-sly-use.model="com.cl.ocm.core.models.OCMAssetsModel" data-sly-list="${model.ocmAssets}">
+  <coral-masonry-item class="foundation-collection-item coral3-Masonry-item is-managed" data-foundation-collection-item-id="${item.assetTitle}" data-href="${item.assetLink}" tabindex="${index}" aria-selected="false" style="width: 242px; transform: translate(119px, 15px);">
+    <div hidden="" data-timeline="true" class="foundation-collection-assets-meta" data-foundation-collection-meta-title="${item.assetTitle}" data-foundation-collection-meta-folder="false" data-foundation-collection-meta-type="asset" data-foundation-collection-meta-path="${item.assetLink}" data-asset-mimetype="image/png" data-can-compare="true" ></div>
+    <a class="foundation-layout-masonry-cardwrapper" tabindex="-1" target="undefined" href="${item.assetLink}" aria-haspopup="true" aria-owns="coral-id-55">
+      <coral-card data-timeline="true" data-can-compare="true" data-can-findsimilar="true" data-has-features="false" data-editorkey="" class="foundation-collection-navigator coral3-Card" data-foundation-collection-navigator-href="${item.assetLink}" data-item-type="asset" aria-haspopup="true" aria-owns="coral-id-55">
+        <coral-card-asset>
+          <img src="${item.assetLink}" alt=${item.assetTitle}"" class="">
+        </coral-card-asset>
+        <coral-card-info>
+          <coral-tag color="blue" class="u-coral-pullRight">OCM Asset</coral-tag>
+        </coral-card-info>
+        <div class="coral3-Card-wrapper">
+          <coral-card-content>
+            <coral-card-context class="coral3-Card-context">
+              IMAGE
+            </coral-card-context>
+            <coral-card-title class="foundation-collection-item-title coral3-Card-title">${item.assetTitle}</coral-card-title>
+
+            <link rel="properties" href="${item.assetLink}">
+          </coral-card-content>
+        </div>
+      </coral-card>
+    </a>
+    <coral-quickactions target="_prev" alignmy="left top" alignat="left top">
+      <coral-quickactions-item icon="check" class="foundation-collection-action" data-foundation-collection-action='{"action": "cq.wcm.ocm.select"}'>Select</coral-quickactions-item>
+      <coral-quickactions-item icon="link" class="foundation-collection-action" data-foundation-collection-action='{"action": "cq.wcm.ocm.link"}'>Get Link</coral-quickactions-item>
+      <coral-quickactions-item icon="copy" class="foundation-collection-action" data-foundation-collection-action='{"action": "cq.wcm.ocm.embed"}'>Copy for Embedding</coral-quickactions-item>
+    </coral-quickactions>
+
+  </coral-masonry-item>
+</sly>
+
