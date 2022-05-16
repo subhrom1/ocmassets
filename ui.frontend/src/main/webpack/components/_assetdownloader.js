@@ -1,141 +1,135 @@
-(function(window, document, Granite, $) {
+(function (window, document, Granite, $) {
 
-    $(".upload-button").hide();
-    $(".ocm-wait").hide();
-    $(".ocm-dl-dialog").hide();
-    $(".ocm-success-alert").hide();
+    const UPLOAD_ASSETS_URL = "/bin/uploadassets";
 
-    successAlert = (msg) => {
-      $(".ocm-success-alert").find("coral-alert-content").html(msg);
-      $(".ocm-success-alert").fadeIn(1000);
-      $(".ocm-success-alert").fadeOut(1000)
-     };
+    const FETCH_MORE_CARDS_URL = "/content/ocmassets/us/en/asset-downloader-items.html?wcmmode=disabled";
 
-    errorAlert = (msg) => {
-      $(".ocm-error-alert").find("coral-alert-content").html(msg);
-      $(".ocm-error-alert").fadeIn(1000);
-      $(".ocm-error-alert").fadeOut(1000)
-     };
+    const successAlert = (msg) => {
+        $(".ocm-success-alert").find("coral-alert-content").html(msg);
+        $(".ocm-success-alert").fadeIn(1000);
+        $(".ocm-success-alert").fadeOut(2000)
+    };
+
+    const errorAlert = (msg) => {
+        $(".ocm-error-alert").find("coral-alert-content").html(msg);
+        $(".ocm-error-alert").fadeIn(2000);
+        $(".ocm-error-alert").fadeOut(3000)
+    };
 
     $(window).adaptTo("foundation-registry").register("foundation.collection.action.action", {
         name: "cq.wcm.ocm.select",
-        handler: function(name, el, config, collection, selections) {
+        handler: function (name, el, config, collection, selections) {
 
             if (selections.length != 1) {
                 return;
             }
 
-             selections.map((item) => {
-                item.selected=!item.selected;
-                 let selectedItems = $(".coral3-Masonry-item.is-selected");
-                 if (item.selected && selectedItems.length == 0) {
-                     $(".upload-button").show();
-                 } else if (!item.selected && selectedItems.length == 1) {
-                     $(".upload-button").hide();
-                  }
+            selections.map((item) => {
+                item.selected = !item.selected;
+                let selectedItems = $(".coral3-Masonry-item.is-selected");
+                if (item.selected && selectedItems.length == 0) {
+                    $(".upload-button").show();
+                } else if (!item.selected && selectedItems.length == 1) {
+                    $(".upload-button").hide();
+                }
                 return true;
             });
         }
     });
 
-        $(window).adaptTo("foundation-registry").register("foundation.collection.action.action", {
-            name: "cq.wcm.ocm.upload",
-            handler: function(name, el, config, collection, selections) {
-                console.log('Upload Bu  tton Clicked');
-                $(".ocm-wait").show();
-                let selectedItems = $(".coral3-Masonry-item.is-selected");
-                console.log(selectedItems.length);
-                $(".ocm-dl-dialog").show();
-                let ocmAssetUploadDlg = new Coral.Dialog().set({
-                    id: "ocm-dl-success",
-                    header: {
-                      innerHTML: "AEM Asset Upload"
-                    },
-                    content: {
-                      innerHTML: "Asset upload request sent.."
-                    },
-                    footer: {
-                      innerHTML: "<button is=\"coral-button\" variant=\"primary\" coral-close=\"\" class=\"coral3-Button coral3-Button--primary\" size=\"M\"><coral-button-label>Ok</coral-button-label></button>"
-                    },
-                    variant: "default"
-                  });
+    $(window).adaptTo("foundation-registry").register("foundation.collection.action.action", {
+        name: "cq.wcm.ocm.upload",
+        handler: function (name, el, config, collection, selections) {
+            $(".ocm-wait").show();
+            let selectedItems = $(".coral3-Masonry-item.is-selected");
 
-                    let url = '/bin/uploadassets';
-                    fetch(url, { method: 'POST' })
-                        .then(Result => Result.json())
-                         .then(string => {
-                           document.body.appendChild(ocmAssetUploadDlg);
-                           ocmAssetUploadDlg.show();
-                           $(".ocm-wait").hide();
-                           let selectedItems = $(".coral3-Masonry-item.is-selected");
-                           selectedItems.map(item => item.selected = false);
-                          })
-                     .catch(errorMsg => { errorAlert(errorMsg); });
+            let itemArr = [];
+            for (let item of selectedItems) {
+                let link = $(item).attr("data-href");
+                if (link) {
+                    itemArr.push(link);
+                    item.selected = false;
+                }
             }
-        });
 
-         $(window).adaptTo("foundation-registry").register("foundation.collection.action.action", {
-                    name: "cq.wcm.ocm.back",
-                    handler: function(name, el, config, collection, selections) {
-                        window.history.go(-1);
+            fetch(UPLOAD_ASSETS_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8'
+                },
+                body: JSON.stringify({"links":itemArr})
+            })
+                .then(Result => Result.json())
+                .then(string => {
+                    successAlert("Asset(s) uploaded to AEM.");
+                    $(".ocm-wait").hide();
+                })
+                .catch(errorMsg => { errorAlert(errorMsg); });
+        }
+    });
+
+    $(window).adaptTo("foundation-registry").register("foundation.collection.action.action", {
+        name: "cq.wcm.ocm.back",
+        handler: function (name, el, config, collection, selections) {
+            window.history.go(-1);
+        }
+    });
+
+    $(window).adaptTo("foundation-registry").register("foundation.collection.action.action", {
+        name: "cq.wcm.ocm.link",
+        handler: function (name, el, config, collection, selections) {
+            if (selections.length != 1) {
+                return;
+            }
+
+            selections.map((item) => {
+                let link = $(item).attr("data-href");
+                window.navigator.clipboard.writeText(link);
+                successAlert("Asset link copied.")
+                return true;
+            });
+        }
+    });
+
+    $(window).adaptTo("foundation-registry").register("foundation.collection.action.action", {
+        name: "cq.wcm.ocm.embed",
+        handler: function (name, el, config, collection, selections) {
+            if (selections.length != 1) {
+                return;
+            }
+
+            selections.map((item) => {
+                let link = $(item).attr("data-href");
+                let img = `<img src="${link}" alt="ocm-image" height="400" width="700"/>`;
+                window.navigator.clipboard.writeText(img);
+                successAlert("Asset embed copied.");
+                return true;
+            });
+        }
+    });
+
+
+    let container = $(".foundation-layout-panel-content");
+    let scrollToEndCount = 0;
+    container.scroll(() => {
+        if (container.scrollTop() + container.innerHeight() >= container[0].scrollHeight) {
+            $(".ocm-wait").show();
+            scrollToEndCount++;
+            let url = `${FETCH_MORE_CARDS_URL}&offset=${40 * scrollToEndCount}`;
+            fetch(url, { method: 'GET' })
+                .then(Result => Result.text())
+                .then(html => {
+                    let docx = $.parseHTML(html);
+                    let results = $(docx).find(".coral3-Masonry-item");
+                    if (results && results.length > 0) {
+                        $(".coral3-Masonry").append(results);
+
                     }
-                });
+                    $(".ocm-wait").hide();
+                })
+                .catch(errorMsg => { errorAlert(errorMsg); $(".ocm-results-wait").hide(); });
 
-          $(window).adaptTo("foundation-registry").register("foundation.collection.action.action", {
-                        name: "cq.wcm.ocm.link",
-                        handler: function(name, el, config, collection, selections) {
-                               if (selections.length != 1) {
-                                            return;
-                                        }
-
-                               selections.map((item) => {
-                                    let link = $(item).attr("data-href");
-                                    window.navigator.clipboard.writeText(link);
-                                    successAlert("Asset link copied.")
-                                    return true;
-                                });
-                        }
-                    });
-
-           $(window).adaptTo("foundation-registry").register("foundation.collection.action.action", {
-                name: "cq.wcm.ocm.embed",
-                handler: function(name, el, config, collection, selections) {
-                       if (selections.length != 1) {
-                                    return;
-                                }
-
-                       selections.map((item) => {
-                            let link = $(item).attr("data-href");
-                            let img = `<img src="${link}" alt="" />`;
-                            window.navigator.clipboard.writeText(img);
-                            successAlert("Asset embed copied.")
-                            return true;
-                        });
-                }
-            });
-
-
-            let container = $(".foundation-layout-panel-content");
-            let scrollToEndCount = 0;
-            container.scroll(() => {
-                if(container.scrollTop() + container.innerHeight() >= container[0].scrollHeight) {
-                       $(".ocm-wait").show();
-                       scrollToEndCount++;
-                       let url = `/content/ocmassets/us/en/asset-downloader-items.html?wcmmode=disabled&offset=${40*scrollToEndCount}`;
-                       fetch(url, { method: 'GET' })
-                        .then(Result => Result.text())
-                        .then(html => {
-                            let docx = $.parseHTML(html);
-                            let results = $(docx).find(".coral3-Masonry-item");
-                                if (results && results.length > 0) {
-                                    $(".coral3-Masonry").append(results);
-
-                                }
-                                $(".ocm-wait").hide();
-                            })
-                            .catch(errorMsg => { errorAlert(errorMsg);$(".ocm-results-wait").hide(); });
-
-                }
-            });
+        }
+    });
 
 })(window, document, Granite, Granite.$);

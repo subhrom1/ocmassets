@@ -64,7 +64,7 @@ public class OCMAssetFetchServiceImpl implements OCMAssetFetchService {
     @Override
     public List<OCMAsset> fetchOCMAssetLinks(int offset, int limit)  {
 
-        if (offset < 800) {
+        if (offset >0 && offset < 800) {
             try {
                 Thread.sleep(2000);
             }catch (InterruptedException ex) {

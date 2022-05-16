@@ -2,11 +2,11 @@
 
     <coral-shell-header class="coral--dark granite-shell-header coral3-Shell-header" data-granite-shell-header-mode-group="cq-damadmin-admin-childpages" role="region" aria-label="Header Bar">
       <coral-alert variant="success" class="ocm-success-alert" style="position:absolute; top: 0%; left: 45%;display:none;z-index:1000;">
-        <coral-alert-header>INFO</coral-alert-header>
+        <coral-alert-header>SUCCESS</coral-alert-header>
         <coral-alert-content>Success.</coral-alert-content>
       </coral-alert>
       <coral-alert variant="error" class="ocm-error-alert" style="position:absolute; top: 0%; left: 45%;display:none;z-index:1000;">
-        <coral-alert-header>Error</coral-alert-header>
+        <coral-alert-header>ERROR</coral-alert-header>
         <coral-alert-content>Error.</coral-alert-content>
       </coral-alert>
       <coral-shell-header-home class="globalnav-toggle" data-globalnav-toggle-href="/mnt/overlay/granite/ui/content/shell/globalnav.html?consoleId=cq-assets-files-files" role="heading" aria-level="2">
@@ -26,7 +26,7 @@
 
       <div id="granite-shell-content" class="foundation-layout-panel">
 
-        <coral-wait class="ocm-wait" size="L" centered style="position: absolute; top: 45%; right=50%;z-index: 1000;">
+        <coral-wait class="ocm-wait" size="L" centered style="position: absolute; top: 45%; right=50%;z-index: 1000;display:none;">
         </coral-wait>
 
 
@@ -37,7 +37,7 @@
             </betty-titlebar-title>
             <betty-titlebar-primary></betty-titlebar-primary>
             <betty-titlebar-secondary>
-              <button class="foundation-collection-action upload-button"  icon="dataUpload" data-foundation-collection-action='{"action": "cq.wcm.ocm.upload"}' type="button" autocomplete="off" is="coral-button" variant="minimal" trackingfeature="" trackingelement="upload" tracking="ON" size="L" />
+              <button class="foundation-collection-action upload-button"  icon="dataUpload" data-foundation-collection-action='{"action": "cq.wcm.ocm.upload"}' type="button" autocomplete="off" is="coral-button" variant="minimal" trackingfeature="" trackingelement="upload" tracking="ON" size="L" style="display:none;"/>
               <button class="foundation-collection-action back-button" icon="back" data-foundation-collection-action='{"action": "cq.wcm.ocm.back"}' type="button" autocomplete="off" is="coral-button" variant="minimal" trackingfeature="" trackingelement="back" tracking="ON" size="L" />
             </betty-titlebar-secondary>
           </betty-titlebar>
