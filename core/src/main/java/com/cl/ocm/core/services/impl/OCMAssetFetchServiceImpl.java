@@ -29,11 +29,11 @@ public class OCMAssetFetchServiceImpl implements OCMAssetFetchService {
 
         List<OCMAsset> ocmAssetsList = new ArrayList<>();
 
-            ocmAssetsList.add(new OCMAsset("Sea", "https://cdn.pixabay.com/photo/2013/07/18/20/26/sea-164989_1280.jpg", false));
-            ocmAssetsList.add(new OCMAsset("Mountain", "https://cdn.pixabay.com/photo/2013/04/04/12/34/mountains-100367_1280.jpg", false));
-            ocmAssetsList.add(new OCMAsset("Birds", "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_1280.jpg", false));
-            ocmAssetsList.add(new OCMAsset("Berries", "https://cdn.pixabay.com/photo/2010/12/13/10/05/berries-2277_1280.jpg", false));
-            ocmAssetsList.add(new OCMAsset("Beach", "https://cdn.pixabay.com/photo/2014/12/16/22/25/woman-570883_1280.jpg", false));
+        ocmAssetsList.add(new OCMAsset("Sea", "https://cdn.pixabay.com/photo/2013/07/18/20/26/sea-164989_1280.jpg", false));
+        ocmAssetsList.add(new OCMAsset("Mountain", "https://cdn.pixabay.com/photo/2013/04/04/12/34/mountains-100367_1280.jpg", false));
+        ocmAssetsList.add(new OCMAsset("Birds", "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_1280.jpg", false));
+        ocmAssetsList.add(new OCMAsset("Berries", "https://cdn.pixabay.com/photo/2010/12/13/10/05/berries-2277_1280.jpg", false));
+        ocmAssetsList.add(new OCMAsset("Beach", "https://cdn.pixabay.com/photo/2014/12/16/22/25/woman-570883_1280.jpg", false));
 
         ocmAssetsList.add(new OCMAsset("Autumn", "https://cdn.pixabay.com/photo/2013/11/28/10/03/river-219972_1280.jpg", false));
         ocmAssetsList.add(new OCMAsset("Flowers", "https://cdn.pixabay.com/photo/2014/04/14/20/11/pink-324175_1280.jpg", false));
@@ -72,30 +72,30 @@ public class OCMAssetFetchServiceImpl implements OCMAssetFetchService {
             }
         }
 
-         if (offset == 40) {
-             List<OCMAsset> ocmAssetsList = new ArrayList<>();
-             ocmAssetsList.add(new OCMAsset("Big Mountain", "https://cdn.pixabay.com/photo/2017/02/14/03/03/ama-dablam-2064522_1280.jpg", false));
-             ocmAssetsList.add(new OCMAsset("Arctic Fox", "https://cdn.pixabay.com/photo/2017/01/14/12/59/iceland-1979445_1280.jpg", false));
-             ocmAssetsList.add(new OCMAsset("Aurora", "https://cdn.pixabay.com/photo/2016/02/09/19/57/aurora-1190254_1280.jpg", false));
-             ocmAssetsList.add(new OCMAsset("Polar Light", "https://cdn.pixabay.com/photo/2016/02/07/19/48/aurora-1185464_1280.jpg", false));
-             ocmAssetsList.add(new OCMAsset("Fun", "https://cdn.pixabay.com/photo/2017/02/16/19/47/bokeh-2072271_1280.jpg", false));
-             return ocmAssetsList;
+        if (offset == 40) {
+            List<OCMAsset> ocmAssetsList = new ArrayList<>();
+            ocmAssetsList.add(new OCMAsset("Big Mountain", "https://cdn.pixabay.com/photo/2017/02/14/03/03/ama-dablam-2064522_1280.jpg", false));
+            ocmAssetsList.add(new OCMAsset("Arctic Fox", "https://cdn.pixabay.com/photo/2017/01/14/12/59/iceland-1979445_1280.jpg", false));
+            ocmAssetsList.add(new OCMAsset("Aurora", "https://cdn.pixabay.com/photo/2016/02/09/19/57/aurora-1190254_1280.jpg", false));
+            ocmAssetsList.add(new OCMAsset("Polar Light", "https://cdn.pixabay.com/photo/2016/02/07/19/48/aurora-1185464_1280.jpg", false));
+            ocmAssetsList.add(new OCMAsset("Fun", "https://cdn.pixabay.com/photo/2017/02/16/19/47/bokeh-2072271_1280.jpg", false));
+            return ocmAssetsList;
 
         }
 
         else if (offset == 80) {
 
-             List<OCMAsset> ocmAssetsList = new ArrayList<>();
-             ocmAssetsList.add(new OCMAsset("Candles", "https://cdn.pixabay.com/photo/2016/12/22/22/07/hands-1926414_1280.jpg", false));
-             ocmAssetsList.add(new OCMAsset("Book", "https://cdn.pixabay.com/photo/2016/03/27/19/32/book-1283865_1280.jpg", false));
-             ocmAssetsList.add(new OCMAsset("Library", "https://cdn.pixabay.com/photo/2016/02/16/21/07/books-1204029_1280.jpg", false));
-             ocmAssetsList.add(new OCMAsset("Eye Glasses", "https://cdn.pixabay.com/photo/2015/11/19/21/10/glasses-1052010_1280.jpg", false));
-             ocmAssetsList.add(new OCMAsset("School Book", "https://cdn.pixabay.com/photo/2016/06/01/06/26/open-book-1428428_1280.jpg", false));
-             return ocmAssetsList;
+            List<OCMAsset> ocmAssetsList = new ArrayList<>();
+            ocmAssetsList.add(new OCMAsset("Candles", "https://cdn.pixabay.com/photo/2016/12/22/22/07/hands-1926414_1280.jpg", false));
+            ocmAssetsList.add(new OCMAsset("Book", "https://cdn.pixabay.com/photo/2016/03/27/19/32/book-1283865_1280.jpg", false));
+            ocmAssetsList.add(new OCMAsset("Library", "https://cdn.pixabay.com/photo/2016/02/16/21/07/books-1204029_1280.jpg", false));
+            ocmAssetsList.add(new OCMAsset("Eye Glasses", "https://cdn.pixabay.com/photo/2015/11/19/21/10/glasses-1052010_1280.jpg", false));
+            ocmAssetsList.add(new OCMAsset("School Book", "https://cdn.pixabay.com/photo/2016/06/01/06/26/open-book-1428428_1280.jpg", false));
+            return ocmAssetsList;
         }
         else if (offset > 800) {
-             return Collections.emptyList();
-         }
+            return Collections.emptyList();
+        }
         return fetchOCMAssetLinks();
     }
 

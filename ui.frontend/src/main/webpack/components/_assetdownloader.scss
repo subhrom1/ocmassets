@@ -1,0 +1,28 @@
+.ocm-success-alert, .ocm-error-alert {
+    position: absolute;
+    top: 0%;
+    left: 45%;
+    display: none;
+    z-index: 1000;
+}
+
+.ocm-wait {
+    position: absolute;
+    top: 45%;
+    right: 50%;
+    z-index: 1000;
+    display: none;
+}
+
+.upload-button {
+    display: none;
+}
+
+.coral3-Masonry {
+    height: 1727px;
+}
+
+.coral3-Masonry-item {
+    width: 242px;
+    transform: translate(119px, 15px);
+}

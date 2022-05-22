@@ -4,11 +4,11 @@
     <tools jcr:primaryType="nt:unstructured">
         <OCM
             jcr:primaryType="nt:unstructured"
-            jcr:title="Oracle Content Management">
+            jcr:title="Sitecore ContentHub">
             <download-assets
-                jcr:description="Download assets from Oracle Content Management and simultaneously upload to Adobe Experience Manager"
+                jcr:description="Download assets from ContentHub and simultaneously upload to Adobe Experience Manager"
                 jcr:primaryType="nt:unstructured"
-                jcr:title="OCM Assets"
+                jcr:title="ContentHub Assets"
                 href="/content/ocmassets/us/en/asset-downloader.html"
                 icon="dataUpload"
                 id="cq-ocm-downloadassets"/>

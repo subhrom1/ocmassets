@@ -1,15 +1,18 @@
   <coral-shell class="coral3-Shell">
 
-    <coral-shell-header class="coral--dark granite-shell-header coral3-Shell-header" data-granite-shell-header-mode-group="cq-damadmin-admin-childpages" role="region" aria-label="Header Bar">
-      <coral-alert variant="success" class="ocm-success-alert" style="position:absolute; top: 0%; left: 45%;display:none;z-index:1000;">
+    <coral-shell-header class="coral--dark granite-shell-header coral3-Shell-header"  role="region" aria-label="Header Bar">
+
+      <coral-alert variant="success" class="ocm-success-alert">
         <coral-alert-header>SUCCESS</coral-alert-header>
-        <coral-alert-content>Success.</coral-alert-content>
+        <coral-alert-content/>
       </coral-alert>
-      <coral-alert variant="error" class="ocm-error-alert" style="position:absolute; top: 0%; left: 45%;display:none;z-index:1000;">
+
+      <coral-alert variant="error" class="ocm-error-alert">
         <coral-alert-header>ERROR</coral-alert-header>
-        <coral-alert-content>Error.</coral-alert-content>
+        <coral-alert-content/>
       </coral-alert>
-      <coral-shell-header-home class="globalnav-toggle" data-globalnav-toggle-href="/mnt/overlay/granite/ui/content/shell/globalnav.html?consoleId=cq-assets-files-files" role="heading" aria-level="2">
+
+      <coral-shell-header-home class="globalnav-toggle"  role="heading" aria-level="2">
         <a is="coral-shell-homeanchor" icon="adobeExperienceManagerColor" href="/aem/start.html" id="globalNavHeader" aria-expanded="false" class="coral3-Shell-homeAnchor">
           <coral-icon class="coral3-Icon coral3-Shell-homeAnchor-icon coral3-Icon--sizeM coral3-Icon--adobeExperienceManagerColor" icon="adobeExperienceManagerColor" size="M" autoarialabel="on" role="img" aria-label="adobe experience manager color"></coral-icon>
           <coral-shell-homeanchor-label>Adobe Experience Manager</coral-shell-homeanchor-label>
@@ -26,18 +29,18 @@
 
       <div id="granite-shell-content" class="foundation-layout-panel">
 
-        <coral-wait class="ocm-wait" size="L" centered style="position: absolute; top: 45%; right=50%;z-index: 1000;display:none;">
+        <coral-wait class="ocm-wait" size="L" centered >
         </coral-wait>
 
 
         <div class="foundation-layout-panel-header">
           <betty-titlebar>
             <betty-titlebar-title>
-              <span class="granite-title" role="heading" aria-level="1">Oracle Content Management </span>
+              <span class="granite-title" role="heading" aria-level="1">ContentHub Assets </span>
             </betty-titlebar-title>
             <betty-titlebar-primary></betty-titlebar-primary>
             <betty-titlebar-secondary>
-              <button class="foundation-collection-action upload-button"  icon="dataUpload" data-foundation-collection-action='{"action": "cq.wcm.ocm.upload"}' type="button" autocomplete="off" is="coral-button" variant="minimal" trackingfeature="" trackingelement="upload" tracking="ON" size="L" style="display:none;"/>
+              <button class="foundation-collection-action upload-button"  title="Upload to AEM" icon="dataUpload" data-foundation-collection-action='{"action": "cq.wcm.ocm.upload"}' type="button" autocomplete="off" is="coral-button" variant="minimal" trackingfeature="" trackingelement="upload" tracking="ON" size="L"/>
               <button class="foundation-collection-action back-button" icon="back" data-foundation-collection-action='{"action": "cq.wcm.ocm.back"}' type="button" autocomplete="off" is="coral-button" variant="minimal" trackingfeature="" trackingelement="back" tracking="ON" size="L" />
             </betty-titlebar-secondary>
           </betty-titlebar>
@@ -47,7 +50,7 @@
           <div class="foundation-layout-panel-body">
 
             <div class="foundation-layout-panel-content foundation-collection-content" data-granite-layout-content-min-width="100">
-              <coral-masonry class="cq-damadmin-admin-childpages foundation-collection foundation-layout-masonry coral3-Masonry is-loaded" data-foundation-collection-sortorder="asc" layout="fixed-spread" ariagrid="off" columnwidth="242" spacing="15" style="height: 1727px;">
+              <coral-masonry class="cq-damadmin-admin-childpages foundation-collection foundation-layout-masonry coral3-Masonry is-loaded" data-foundation-collection-sortorder="asc" layout="fixed-spread" ariagrid="off" columnwidth="242" spacing="15">
                 <sly data-sly-resource="${'assetdownloaderitems' @ resourceType='ocmassets/components/assetdownloaderitems'}"></sly>
               </coral-masonry>
             </div>
