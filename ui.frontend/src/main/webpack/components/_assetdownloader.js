@@ -60,11 +60,16 @@
                 body: JSON.stringify({"links":itemArr})
             })
                 .then(Result => Result.json())
-                .then(string => {
+                .then(message => {
                     successAlert("Asset(s) uploaded to AEM.");
                     $(".ocm-wait").hide();
+                    $(".upload-button").fadeOut(1000);
                 })
-                .catch(errorMsg => { errorAlert(errorMsg); });
+                .catch(errorMsg => {
+                    errorAlert("Error uploading assets..");
+                    $(".ocm-wait").hide();
+                    $(".upload-button").fadeOut(1000);
+                });
         }
     });
 
@@ -82,11 +87,10 @@
                 return;
             }
 
-            selections.map((item) => {
+            selections.forEach((item) => {
                 let link = $(item).attr("data-href");
                 window.navigator.clipboard.writeText(link);
                 successAlert("Asset link copied.")
-                return true;
             });
         }
     });
@@ -127,7 +131,10 @@
                     }
                     $(".ocm-wait").hide();
                 })
-                .catch(errorMsg => { errorAlert(errorMsg); $(".ocm-results-wait").hide(); });
+                .catch(errorMsg => {
+                    errorAlert("Error fetching data..");
+                    $(".ocm-results-wait").hide();
+                });
 
         }
     });
