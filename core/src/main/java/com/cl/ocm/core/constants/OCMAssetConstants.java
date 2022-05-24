@@ -16,8 +16,12 @@ public class OCMAssetConstants {
 
     public static final String SLASH = "/";
 
-    public static final String OFFSET_PARAM = "offset";
+    public static final String DOT = ".";
 
-    public static final String LIMIT_PARAM = "limit";
+    public static final String ASSET_METADATA_FOLDER_NAME = "metadata";
+
+    public static final String ASSET_METADATA_PROP_TITLE = "dc:title";
+
+    public static final String OCE_ASSET_SERVICE_USERNAME = "oceassetservice";
 
 }

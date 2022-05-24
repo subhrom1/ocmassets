@@ -1,0 +1,5 @@
+{
+  "user.mapping": [
+    "ocmassets.core:oceassetservice=oceassetuser"
+  ]
+}

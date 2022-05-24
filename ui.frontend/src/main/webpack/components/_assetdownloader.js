@@ -46,8 +46,9 @@
             let itemArr = [];
             for (let item of selectedItems) {
                 let link = $(item).attr("data-href");
-                if (link) {
-                    itemArr.push(link);
+                let title = $(item).attr("data-foundation-collection-item-id");
+                if (link && title) {
+                    itemArr.push({"assetTitle":title, "assetLink":link});
                     item.selected = false;
                 }
             }
@@ -57,7 +58,7 @@
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8'
                 },
-                body: JSON.stringify({"links":itemArr})
+                body: JSON.stringify({"selectedAssets":itemArr})
             })
                 .then(Result => Result.json())
                 .then(message => {
@@ -119,7 +120,7 @@
         if (container.scrollTop() + container.innerHeight() >= container[0].scrollHeight) {
             $(".ocm-wait").show();
             scrollToEndCount++;
-            let url = `${FETCH_MORE_CARDS_URL}.${40 * scrollToEndCount}.20.html`;
+            let url = `${FETCH_MORE_CARDS_URL}.${40 * scrollToEndCount}.20.html?wcmmode=disabled`;
             fetch(url, { method: 'GET' })
                 .then(Result => Result.text())
                 .then(html => {
