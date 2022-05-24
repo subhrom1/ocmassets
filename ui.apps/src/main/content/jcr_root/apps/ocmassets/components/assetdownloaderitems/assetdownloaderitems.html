@@ -1,7 +1,8 @@
 <sly data-sly-use.model="com.cl.ocm.core.models.OCMAssetsModel" data-sly-list="${model.ocmAssets}">
-  <coral-masonry-item class="foundation-collection-item coral3-Masonry-item is-managed" data-foundation-collection-item-id="${item.assetTitle}" data-href="${item.assetLink}" tabindex="${index}" aria-selected="false">
+  <coral-masonry-item class="foundation-collection-item coral3-Masonry-item is-managed" data-foundation-collection-item-id="${item.assetTitle}" data-href="${item.assetLink}" tabindex="${index}"
+                      aria-selected="false">
     <a class="foundation-layout-masonry-cardwrapper" tabindex="-1" target="undefined" href="${item.assetLink}" aria-haspopup="true" aria-owns="coral-id-55">
-      <coral-card  class="foundation-collection-navigator coral3-Card" data-foundation-collection-navigator-href="${item.assetLink}" data-item-type="asset" aria-haspopup="true" aria-owns="coral-id-55">
+      <coral-card  class="foundation-collection-navigator coral3-Card" data-foundation-collection-navigator-href="${item.assetLink}" data-item-type="asset" aria-haspopup="true">
         <coral-card-asset>
           <img src="${item.assetLink}" alt=${item.assetTitle}"" class="">
         </coral-card-asset>

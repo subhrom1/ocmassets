@@ -1,18 +1,22 @@
 package com.cl.ocm.core.dto;
 
+/**
+ * This POJO encapsulates the OCM Asset fetched from the OCM Channel
+ * for AEM. It contains list of all properties fetched for the OCM
+ * asset, e.g. asset title, url, etc.
+ */
 public class OCMAsset {
 
-    public OCMAsset(String assetTitle, String assetLink, boolean isSelected) {
-        this.assetTitle = assetTitle;
-        this.assetLink = assetLink;
-        this.isSelected = isSelected;
-    }
-
+    //Title of the asset
     private String assetTitle;
 
+    //Asset Link/URL
     private String assetLink;
 
-    private boolean isSelected;
+    public OCMAsset(String assetTitle, String assetLink) {
+        this.assetTitle = assetTitle;
+        this.assetLink = assetLink;
+    }
 
     public String getAssetTitle() {
         return assetTitle;
@@ -28,13 +32,5 @@ public class OCMAsset {
 
     public void setAssetLink(String assetLink) {
         this.assetLink = assetLink;
-    }
-
-    public boolean isSelected() {
-        return isSelected;
-    }
-
-    public void setSelected(boolean selected) {
-        isSelected = selected;
     }
 }
