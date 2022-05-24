@@ -2,7 +2,7 @@
 
     const UPLOAD_ASSETS_URL = "/bin/uploadassets";
 
-    const FETCH_MORE_CARDS_URL = "/content/ocmassets/us/en/asset-downloader-items.html?wcmmode=disabled";
+    const FETCH_MORE_CARDS_URL = "/content/ocmassets/us/en/asset-downloader-items";
 
     const successAlert = (msg) => {
         $(".ocm-success-alert").find("coral-alert-content").html(msg);
@@ -119,7 +119,7 @@
         if (container.scrollTop() + container.innerHeight() >= container[0].scrollHeight) {
             $(".ocm-wait").show();
             scrollToEndCount++;
-            let url = `${FETCH_MORE_CARDS_URL}&offset=${40 * scrollToEndCount}`;
+            let url = `${FETCH_MORE_CARDS_URL}.${40 * scrollToEndCount}.20.html`;
             fetch(url, { method: 'GET' })
                 .then(Result => Result.text())
                 .then(html => {

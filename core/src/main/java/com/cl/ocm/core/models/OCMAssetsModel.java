@@ -6,14 +6,12 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.Self;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-
-import static com.cl.ocm.core.constants.OCMAssetConstants.LIMIT_PARAM;
-import static com.cl.ocm.core.constants.OCMAssetConstants.OFFSET_PARAM;
 
 /**
  * The Model Class which is attached to OCM Assets Fetch HTL to show
@@ -22,13 +20,16 @@ import static com.cl.ocm.core.constants.OCMAssetConstants.OFFSET_PARAM;
 @Model(adaptables = {SlingHttpServletRequest.class, Resource.class})
 public class OCMAssetsModel {
 
+    //Logger for this class
+    private static final Logger LOGGER = LoggerFactory.getLogger(OCMAssetsModel.class);
+
     private List<OCMAsset> ocmAssets;
     private int offset;
     private int limit;
 
     @Self
     //Encapsulates the request made for fetching data
-    private HttpServletRequest request;
+    private SlingHttpServletRequest request;
 
     @Inject
     //Service to fetch OCM Assets
@@ -41,15 +42,16 @@ public class OCMAssetsModel {
     protected void init() {
 
         //fetches offset and limit if they are not null
-        Object offsetObj = request.getParameter(OFFSET_PARAM);
-        Object limitObj = request.getParameter(LIMIT_PARAM);
+        String[] selectors = request.getRequestPathInfo().getSelectors();
 
-        if (offsetObj != null) {
-            offset = Integer.valueOf(offsetObj.toString());
-        }
-
-        if (limitObj != null) {
-            limit = Integer.valueOf(limitObj.toString());
+        if (selectors != null && selectors.length >= 2) {
+            try {
+                offset = Integer.valueOf(selectors[0]);
+                limit = Integer.valueOf(selectors[1]);
+            } catch (NumberFormatException ne) {
+                LOGGER.error("Exception in parsing non-numeric values for " +
+                        "request selectors in OCMAssetModel.Will fetch data with offset=0, limit=0");
+            }
         }
         ocmAssets = ocmAssetFetchService.fetchOCMAssetLinks(offset, limit);
     }
