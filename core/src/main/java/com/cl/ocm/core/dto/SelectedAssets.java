@@ -9,8 +9,19 @@ import java.util.List;
  */
 public class SelectedAssets {
 
+    //Path to upload assets in DAM
+    private String damUploadPath;
+
     //List of Assets selected
     private List<OCMAsset> selectedAssets;
+
+    public String getDamUploadPath() {
+        return damUploadPath;
+    }
+
+    public void setDamUploadPath(String damUploadPath) {
+        this.damUploadPath = damUploadPath;
+    }
 
     public List<OCMAsset> getSelectedAssets() {
         return selectedAssets;

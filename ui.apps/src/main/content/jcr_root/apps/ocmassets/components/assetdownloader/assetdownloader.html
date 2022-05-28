@@ -36,10 +36,11 @@
         <div class="foundation-layout-panel-header">
           <betty-titlebar>
             <betty-titlebar-title>
-              <span class="granite-title" role="heading" aria-level="1">ContentHub Assets </span>
+              <span class="granite-title" role="heading" aria-level="1">OCM Assets </span>
             </betty-titlebar-title>
             <betty-titlebar-primary></betty-titlebar-primary>
             <betty-titlebar-secondary>
+              <sly data-sly-resource="${'pathbrowser' @ resourceType='ocmassets/components/pathbrowser'}"/>
               <button class="foundation-collection-action upload-button"  title="Upload to AEM" icon="dataUpload" data-foundation-collection-action='{"action": "cq.wcm.ocm.upload"}' type="button" autocomplete="off" is="coral-button" variant="minimal" trackingfeature="" trackingelement="upload" tracking="ON" size="L"/>
               <button class="foundation-collection-action back-button" icon="back" data-foundation-collection-action='{"action": "cq.wcm.ocm.back"}' type="button" autocomplete="off" is="coral-button" variant="minimal" trackingfeature="" trackingelement="back" tracking="ON" size="L" />
             </betty-titlebar-secondary>
@@ -59,3 +60,4 @@
       </div>
     </coral-shell-content>
   </coral-shell>
+

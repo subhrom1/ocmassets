@@ -24,4 +24,8 @@ public class OCMAssetConstants {
 
     public static final String OCE_ASSET_SERVICE_USERNAME = "oceassetservice";
 
+    public static final String ASSET_EXTENSION_3GP = "3gp";
+
+    public static final String MIMETYPE_MAPPER_3GP = "GP";
+
 }

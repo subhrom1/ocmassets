@@ -4,6 +4,8 @@
 
     const FETCH_MORE_CARDS_URL = "/content/ocmassets/us/en/asset-downloader-items";
 
+    $('.xDialog').css({'display':'block'});
+
     const successAlert = (msg) => {
         $(".ocm-success-alert").find("coral-alert-content").html(msg);
         $(".ocm-success-alert").fadeIn(1000);
@@ -53,12 +55,21 @@
                 }
             }
 
+            let uploadPath = $('.js-coral-pathbrowser-input').val();
+
+            if (!uploadPath) {
+                errorAlert("Please specify asset upload path");
+                $(".ocm-wait").hide();
+                $(".upload-button").fadeOut(1000);
+                return;
+            }
+
             fetch(UPLOAD_ASSETS_URL, {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8'
                 },
-                body: JSON.stringify({"selectedAssets":itemArr})
+                body: JSON.stringify({"damUploadPath": uploadPath, "selectedAssets":itemArr})
             })
                 .then(Result => Result.json())
                 .then(message => {
@@ -139,5 +150,4 @@
 
         }
     });
-
 })(window, document, Granite, Granite.$);

@@ -13,9 +13,22 @@ public class OCMAsset {
     //Asset Link/URL
     private String assetLink;
 
+    //Asset Type (Document, Image, etc)
+    private String assetType;
+
+    //Asset thumbnail url
+    private String thumbnailUrl;
+
     public OCMAsset(String assetTitle, String assetLink) {
         this.assetTitle = assetTitle;
         this.assetLink = assetLink;
+    }
+
+    public OCMAsset(String assetTitle, String assetType,  String assetLink,String thumbnailUrl) {
+        this.assetTitle = assetTitle;
+        this.assetType = assetType;
+        this.assetLink = assetLink;
+        this.thumbnailUrl = thumbnailUrl;
     }
 
     public String getAssetTitle() {
@@ -32,5 +45,21 @@ public class OCMAsset {
 
     public void setAssetLink(String assetLink) {
         this.assetLink = assetLink;
+    }
+
+    public String getAssetType() {
+        return assetType;
+    }
+
+    public void setAssetType(String assetType) {
+        this.assetType = assetType;
+    }
+
+    public String getThumbnailUrl() {
+        return thumbnailUrl;
+    }
+
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
     }
 }
