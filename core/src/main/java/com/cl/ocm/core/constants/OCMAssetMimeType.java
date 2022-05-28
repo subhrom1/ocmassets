@@ -8,7 +8,7 @@ public enum OCMAssetMimeType {
 
     JPEG("jpeg", "image/jpeg"),
     JPG("jpg", "image/jpeg"),
-    SVG("svg", "image/svg"),
+    SVG("svg", "image/svg+xml"),
     GIF("gif", "image/gif"),
     DOC("doc", "application/msword"),
     DOCX("docx","application/vnd.openxmlformats-officedocument.wordprocessing"),
@@ -25,9 +25,11 @@ public enum OCMAssetMimeType {
     MPG("mpg", "video/mpeg"),
     WMV("wmv", "video/x-ms-wmv"),
     TIFF("tiff","image/tiff"),
+    TIF("tif","image/tif"),
     XLS("xls","application/vnd.ms-excel"),
     XLSX("xlsx","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"),
     VOB("vob", "image/png"),
+    BMP("bmp", "image/bmp"),
     ZIP("zip", "application/zip");
 
 
