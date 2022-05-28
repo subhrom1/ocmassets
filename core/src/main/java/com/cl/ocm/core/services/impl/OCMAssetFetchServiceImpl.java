@@ -33,6 +33,7 @@ public class OCMAssetFetchServiceImpl implements OCMAssetFetchService {
 
         List<OCMAsset> ocmAssetsList = new ArrayList<>();
 
+        ocmAssetsList.add(new OCMAsset("Sample Large File","VIDEO" ,"http://212.183.159.230/1GB.zip","/content/dam/ocmassets/Video-Placeholder.jpeg"));
         ocmAssetsList.add(new OCMAsset("Sample MP4","VIDEO" ,"http://mirrors.standaloneinstaller.com/video-sample/star_trails.mp4","/content/dam/ocmassets/Video-Placeholder.jpeg"));
         ocmAssetsList.add(new OCMAsset("Sample MP4 2", "VIDEO","http://mirrors.standaloneinstaller.com/video-sample/metaxas-keller-Bell.mp4","/content/dam/ocmassets/Video-Placeholder.jpeg"));
         ocmAssetsList.add(new OCMAsset("Sample PDF","VIDEO","http://www.africau.edu/images/default/sample.pdf","/content/dam/ocmassets/Video-Placeholder.jpeg"));

@@ -27,10 +27,8 @@ public enum OCMAssetMimeType {
     TIFF("tiff","image/tiff"),
     XLS("xls","application/vnd.ms-excel"),
     XLSX("xlsx","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"),
-    VOB("vob", "image/png");
-
-
-
+    VOB("vob", "image/png"),
+    ZIP("zip", "application/zip");
 
 
     //Extension as obtained from asset URL

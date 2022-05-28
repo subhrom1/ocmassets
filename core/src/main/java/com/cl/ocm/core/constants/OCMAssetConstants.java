@@ -18,6 +18,8 @@ public class OCMAssetConstants {
 
     public static final String DOT = ".";
 
+    public static final String EQUALS = "=";
+
     public static final String ASSET_METADATA_FOLDER_NAME = "metadata";
 
     public static final String ASSET_METADATA_PROP_TITLE = "dc:title";
@@ -27,5 +29,13 @@ public class OCMAssetConstants {
     public static final String ASSET_EXTENSION_3GP = "3gp";
 
     public static final String MIMETYPE_MAPPER_3GP = "GP";
+
+    public static final String UPLOAD_JOB_CONSTANT_ASSET_TITLE = "assetTitle";
+
+    public static final String UPLOAD_JOB_CONSTANT_ASSET_LINK = "assetLink";
+
+    public static final String UPLOAD_JOB_CONSTANT_UPLOAD_PATH = "uploadPath";
+
+    public static final String UPLOAD_JOB_TOPIC_NAME = "ocm/aem/upload";
 
 }
