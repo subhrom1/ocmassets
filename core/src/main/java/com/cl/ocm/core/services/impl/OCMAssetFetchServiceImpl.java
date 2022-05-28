@@ -34,7 +34,7 @@ public class OCMAssetFetchServiceImpl implements OCMAssetFetchService {
         List<OCMAsset> ocmAssetsList = new ArrayList<>();
 
         ocmAssetsList.add(new OCMAsset("Sample SVG","IMAGE" ,"https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/410.svg","https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/410.svg"));
-        ocmAssetsList.add(new OCMAsset("Sample TIFF","IMAGE" ,"https://eeweb.engineering.nyu.edu/~yao/EL5123/image/barbara_color.tiff","https://eeweb.engineering.nyu.edu/~yao/EL5123/image/barbara_color.tiff"));
+        ocmAssetsList.add(new OCMAsset("Sample TIFF","IMAGE" ,"https://filesamples.com/samples/image/tiff/sample_640%C3%97426.tiff","https://filesamples.com/samples/image/tiff/sample_640%C3%97426.tiff"));
         ocmAssetsList.add(new OCMAsset("Sample BMP","IMAGE" ,"https://eeweb.engineering.nyu.edu/~yao/EL5123/image/lena_gray.bmp","https://eeweb.engineering.nyu.edu/~yao/EL5123/image/lena_gray.bmp"));
 
         ocmAssetsList.add(new OCMAsset("Sample Large File","VIDEO" ,"http://212.183.159.230/1GB.zip","/content/dam/ocmassets/Video-Placeholder.jpeg"));
