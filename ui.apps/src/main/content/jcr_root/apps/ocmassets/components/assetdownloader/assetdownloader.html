@@ -40,6 +40,7 @@
             </betty-titlebar-title>
             <betty-titlebar-primary></betty-titlebar-primary>
             <betty-titlebar-secondary>
+              <input class="ocm-filter" is="coral-textfield" placeholder="Type to Filter Assets"/>
               <sly data-sly-resource="${'pathbrowser' @ resourceType='ocmassets/components/pathbrowser'}"/>
               <button class="foundation-collection-action upload-button"  title="Upload to AEM" icon="dataUpload" data-foundation-collection-action='{"action": "cq.wcm.ocm.upload"}' type="button" autocomplete="off" is="coral-button" variant="minimal" trackingfeature="" trackingelement="upload" tracking="ON" size="L"/>
               <button class="foundation-collection-action back-button" icon="back" data-foundation-collection-action='{"action": "cq.wcm.ocm.back"}' type="button" autocomplete="off" is="coral-button" variant="minimal" trackingfeature="" trackingelement="back" tracking="ON" size="L" />

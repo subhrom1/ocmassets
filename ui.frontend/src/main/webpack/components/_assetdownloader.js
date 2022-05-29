@@ -4,8 +4,6 @@
 
     const FETCH_MORE_CARDS_URL = "/content/ocmassets/us/en/asset-downloader-items";
 
-    $('.xDialog').css({'display':'block'});
-
     const successAlert = (msg) => {
         $(".ocm-success-alert").find("coral-alert-content").html(msg);
         $(".ocm-success-alert").fadeIn(1000);
@@ -26,7 +24,7 @@
                 return;
             }
 
-            selections.map((item) => {
+            selections.forEach((item) => {
                 item.selected = !item.selected;
                 let selectedItems = $(".coral3-Masonry-item.is-selected");
                 if (item.selected && selectedItems.length == 0) {
@@ -34,7 +32,6 @@
                 } else if (!item.selected && selectedItems.length == 1) {
                     $(".upload-button").hide();
                 }
-                return true;
             });
         }
     });
@@ -114,12 +111,11 @@
                 return;
             }
 
-            selections.map((item) => {
+            selections.forEach((item) => {
                 let link = $(item).attr("data-href");
                 let img = `<img src="${link}" alt="ocm-image" height="400" width="700"/>`;
                 window.navigator.clipboard.writeText(img);
                 successAlert("Asset embed copied.");
-                return true;
             });
         }
     });
@@ -141,6 +137,8 @@
                         $(".coral3-Masonry").append(results);
 
                     }
+                    let filterText = $('.ocm-filter').val();
+                    filterFn(filterText);
                     $(".ocm-wait").hide();
                 })
                 .catch(errorMsg => {
@@ -150,4 +148,24 @@
 
         }
     });
+
+     $('.ocm-filter').on('input', (e) => {
+        let filterText = e.target.value.trim().toLowerCase();
+        filterFn(filterText);
+      });
+
+      const filterFn = (filterText) => {
+       if (!filterText) {
+        return;
+       }
+       let items = $('.coral3-Masonry-item');
+       for (item of items) {
+         let itemText = item.textContent.trim().toLowerCase();
+         if (itemText.indexOf(filterText) !== -1) {
+            item.show();
+         } else {
+            item.hide();
+         }
+       }
+      };
 })(window, document, Granite, Granite.$);
