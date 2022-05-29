@@ -73,7 +73,7 @@
             })
                 .then(Result => Result.json())
                 .then(message => {
-                    successAlert("Asset(s) uploaded to AEM.");
+                    successAlert("Assets enqueued for upload to AEM..");
                     $(".ocm-wait").hide();
                     $(".upload-button").fadeOut(1000);
                 })
